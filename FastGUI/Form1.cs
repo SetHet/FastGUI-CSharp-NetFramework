@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using FastGUI.Evaluations;
+using FastGUI.Modules;
 
 
 namespace FastGUI
@@ -110,6 +111,12 @@ namespace FastGUI
         private void button8_Click(object sender, EventArgs e)
         {
             MessageBox.Show($"Check KFC.......   => {fastGUI[this.textBox7].Evaluate()}");
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            var res = FastGUIControl.Use(this.textBox8).AddEvaluation(TextBoxEvaluations.NotEmpty).Evaluate();
+            MessageBox.Show($"FastGUIControl.Use\nNotEmpty Text8: {res}");
         }
     }
 }

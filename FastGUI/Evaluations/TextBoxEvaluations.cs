@@ -26,16 +26,6 @@ namespace FastGUI.Evaluations
             return float.TryParse(control.Text, out float x);
         }
 
-        //public static bool Max(Control control, float max) { 
-            
-        //    if (float.TryParse(control.Text, out float val))
-        //    {
-        //        return max > val;
-        //    }
-        //    return false;
-        //}
-
-
         public static Modules.FastGUIControl.Evaluator Max(float max)
         {
             return (Control control) =>

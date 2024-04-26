@@ -38,6 +38,12 @@ namespace FastGUI.Modules
             Is = new IsClass(this);
         }
 
+        public static FastGUIControl Use(Control control, bool required = false)
+        {
+            FastGUIControl fgc = new FastGUIControl(control, required);
+            return fgc;
+        }
+
         public bool Evaluate()
         {
             for (int i = 0; i < evaluations.Count; i++)
