@@ -59,5 +59,17 @@ namespace FastGUI.Modules
         {
             get => this.controls[control];
         }
+
+        public FastGUIControl this[int index]
+        {
+            get => this.controls.ToArray()[index].Value;
+        }
+
+        public int Count { get { return controls.Count; } }
+
+        public IEnumerable<KeyValuePair<Control, FastGUIControl>> ToEnumerable
+        {
+            get => this.controls.AsEnumerable();
+        }
     }
 }
