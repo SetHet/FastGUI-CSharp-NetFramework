@@ -109,7 +109,7 @@ namespace FastGUI
 
         private void button8_Click(object sender, EventArgs e)
         {
-            MessageBox.Show($"Check KFC.......   => {fastGUI.Get(this.textBox7).Evaluate()}");
+            MessageBox.Show($"Check KFC.......   => {fastGUI[this.textBox7].Evaluate()}");
         }
     }
 }

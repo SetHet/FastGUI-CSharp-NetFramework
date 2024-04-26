@@ -54,5 +54,10 @@ namespace FastGUI.Modules
                 return null;
             }
         }
+
+        public FastGUIControl this[Control control]
+        {
+            get => this.controls[control];
+        }
     }
 }
