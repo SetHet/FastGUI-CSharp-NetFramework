@@ -3,7 +3,7 @@
 FastGUI es un acelerador de revision de Inputs en Windows Forms.
 
 - C#
-- DotNet Framework 4.6.
+- DotNet Framework 4.6 (o posterior).
 
 ## How Work?
 
