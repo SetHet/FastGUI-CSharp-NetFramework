@@ -5,6 +5,8 @@ VisualStudioVersion = 17.9.34728.123
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FastGUI", "FastGUI\FastGUI.csproj", "{2562AD08-76E4-43DE-AD17-5B7BF3242585}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FastGUIValidator", "FastGUIValidator\FastGUIValidator.csproj", "{13CE32BA-1C48-4449-AF43-A5B697BD6793}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{2562AD08-76E4-43DE-AD17-5B7BF3242585}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2562AD08-76E4-43DE-AD17-5B7BF3242585}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2562AD08-76E4-43DE-AD17-5B7BF3242585}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13CE32BA-1C48-4449-AF43-A5B697BD6793}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13CE32BA-1C48-4449-AF43-A5B697BD6793}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13CE32BA-1C48-4449-AF43-A5B697BD6793}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13CE32BA-1C48-4449-AF43-A5B697BD6793}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
