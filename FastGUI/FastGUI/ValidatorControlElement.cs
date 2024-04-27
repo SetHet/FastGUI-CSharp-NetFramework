@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FastGUI.FastGUI;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
@@ -8,7 +9,7 @@ using System.Windows.Forms;
 
 namespace FastGUI.Modules
 {
-    public class FastGUIControl
+    public class ValidatorControlElement : Evaluation
     {
         public Control control;
         public List<Evaluator> evaluations;
@@ -28,7 +29,7 @@ namespace FastGUI.Modules
         /// <returns></returns>
         public delegate bool Evaluator(Control control);
 
-        public FastGUIControl(Control control, bool required = false)
+        public ValidatorControlElement(Control control, bool required = false)
         {
             this.control = control;
             this.required = required;
@@ -38,9 +39,9 @@ namespace FastGUI.Modules
             Is = new IsClass(this);
         }
 
-        public static FastGUIControl Use(Control control, bool required = false)
+        public static ValidatorControlElement Use(Control control, bool required = false)
         {
-            FastGUIControl fgc = new FastGUIControl(control, required);
+            ValidatorControlElement fgc = new ValidatorControlElement(control, required);
             return fgc;
         }
 
@@ -53,7 +54,7 @@ namespace FastGUI.Modules
             return true;
         }
 
-        public bool EvaluateRequiredControls(FastGUI fastGUI)
+        public bool EvaluateRequiredControls(ValidatorControlCollection fastGUI)
         {
             for (int i = 0; i < requiredControls.Count; i++)
             {
@@ -62,13 +63,13 @@ namespace FastGUI.Modules
             return true;
         }
 
-        public FastGUIControl AddEvaluation(Evaluator evaluator)
+        public ValidatorControlElement AddEvaluation(Evaluator evaluator)
         {
             evaluations.Add(evaluator);
             return this;
         }
 
-        public FastGUIControl AddRequiredControl(Control otherControl)
+        public ValidatorControlElement AddRequiredControl(Control otherControl)
         {
             if (!requiredControls.Contains(otherControl))
                 requiredControls.Add(otherControl);
@@ -83,8 +84,8 @@ namespace FastGUI.Modules
 
         public class GetClass
         {
-            public GetClass(FastGUIControl fgc) { this.fgc = fgc; }
-            FastGUIControl fgc;
+            public GetClass(ValidatorControlElement fgc) { this.fgc = fgc; }
+            ValidatorControlElement fgc;
 
 
             public string String()
@@ -120,8 +121,8 @@ namespace FastGUI.Modules
         
         public class IsClass
         {
-            public IsClass(FastGUIControl fgc) { this.fgc = fgc; }
-            FastGUIControl fgc;
+            public IsClass(ValidatorControlElement fgc) { this.fgc = fgc; }
+            ValidatorControlElement fgc;
 
             public bool Int()
             {

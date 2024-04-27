@@ -10,7 +10,7 @@ namespace FastGUI.Evaluations
 {
     public static class CheckBoxEvaluation
     {
-        public static FastGUIControl.Evaluator Required(FastGUIControl fgc)
+        public static ValidatorControlElement.Evaluator Required(ValidatorControlElement fgc)
         {
             return (Control control) => 
             {
@@ -19,7 +19,7 @@ namespace FastGUI.Evaluations
             };
         }
 
-        public static FastGUIControl.Evaluator Required(Control otherControl, FastGUI.Modules.FastGUI fg)
+        public static ValidatorControlElement.Evaluator Required(Control otherControl, FastGUI.Modules.ValidatorControlCollection fg)
         {
             return (Control control) =>
             {

@@ -19,10 +19,10 @@ namespace FastGUI
         public Form1()
         {
             InitializeComponent();
-            fastGUI = new FastGUI.Modules.FastGUI();
+            fastGUI = new FastGUI.Modules.ValidatorControlCollection();
         }
 
-        FastGUI.Modules.FastGUI fastGUI;
+        FastGUI.Modules.ValidatorControlCollection fastGUI;
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -115,7 +115,7 @@ namespace FastGUI
 
         private void button9_Click(object sender, EventArgs e)
         {
-            var res = FastGUIControl.Use(this.textBox8).AddEvaluation(TextBoxEvaluations.NotEmpty).Evaluate();
+            var res = ValidatorControlElement.Use(this.textBox8).AddEvaluation(TextBoxEvaluations.NotEmpty).Evaluate();
             MessageBox.Show($"FastGUIControl.Use\nNotEmpty Text8: {res}");
         }
     }

@@ -26,7 +26,7 @@ namespace FastGUI.Evaluations
             return float.TryParse(control.Text, out float x);
         }
 
-        public static Modules.FastGUIControl.Evaluator Max(float max)
+        public static Modules.ValidatorControlElement.Evaluator Max(float max)
         {
             return (Control control) =>
             {
@@ -38,7 +38,7 @@ namespace FastGUI.Evaluations
             };
         }
 
-        public static Modules.FastGUIControl.Evaluator MaxEqual(float max)
+        public static Modules.ValidatorControlElement.Evaluator MaxEqual(float max)
         {
             return (Control control) =>
             {
@@ -50,7 +50,7 @@ namespace FastGUI.Evaluations
             };
         }
 
-        public static Modules.FastGUIControl.Evaluator Min(float min)
+        public static Modules.ValidatorControlElement.Evaluator Min(float min)
         {
             return (Control control) =>
             {
@@ -62,7 +62,7 @@ namespace FastGUI.Evaluations
             };
         }
 
-        public static Modules.FastGUIControl.Evaluator MinEqual(float min)
+        public static Modules.ValidatorControlElement.Evaluator MinEqual(float min)
         {
             return (Control control) =>
             {
@@ -74,7 +74,7 @@ namespace FastGUI.Evaluations
             };
         }
 
-        public static Modules.FastGUIControl.Evaluator RegExp(string re)
+        public static Modules.ValidatorControlElement.Evaluator RegExp(string re)
         {
             return (Control control) =>
             {
@@ -82,7 +82,7 @@ namespace FastGUI.Evaluations
             };
         }
 
-        public static Modules.FastGUIControl.Evaluator FirstLetters(string subtxt)
+        public static Modules.ValidatorControlElement.Evaluator FirstLetters(string subtxt)
         {
             return (Control control) =>
             {
@@ -96,7 +96,7 @@ namespace FastGUI.Evaluations
             };
         }
 
-        public static Modules.FastGUIControl.Evaluator LastLetters(string subtxt)
+        public static Modules.ValidatorControlElement.Evaluator LastLetters(string subtxt)
         {
             return (Control control) =>
             {
@@ -110,7 +110,7 @@ namespace FastGUI.Evaluations
             };
         }
 
-        public static Modules.FastGUIControl.Evaluator Contains(string subtxt)
+        public static Modules.ValidatorControlElement.Evaluator Contains(string subtxt)
         {
             return (Control control) =>
             {
@@ -118,7 +118,7 @@ namespace FastGUI.Evaluations
             };
         }
 
-        public static Modules.FastGUIControl.Evaluator Length(int length)
+        public static Modules.ValidatorControlElement.Evaluator Length(int length)
         {
             return (Control control) =>
             {
@@ -126,7 +126,7 @@ namespace FastGUI.Evaluations
             };
         }
 
-        public static Modules.FastGUIControl.Evaluator LengthNot(int length)
+        public static Modules.ValidatorControlElement.Evaluator LengthNot(int length)
         {
             return (Control control) =>
             {
@@ -134,7 +134,7 @@ namespace FastGUI.Evaluations
             };
         }
 
-        public static Modules.FastGUIControl.Evaluator LengthMax(int length)
+        public static Modules.ValidatorControlElement.Evaluator LengthMax(int length)
         {
             return (Control control) =>
             {
@@ -142,7 +142,7 @@ namespace FastGUI.Evaluations
             };
         }
 
-        public static Modules.FastGUIControl.Evaluator LengthMaxEqual(int length)
+        public static Modules.ValidatorControlElement.Evaluator LengthMaxEqual(int length)
         {
             return (Control control) =>
             {
@@ -150,7 +150,7 @@ namespace FastGUI.Evaluations
             };
         }
 
-        public static Modules.FastGUIControl.Evaluator LengthMin(int length)
+        public static Modules.ValidatorControlElement.Evaluator LengthMin(int length)
         {
             return (Control control) =>
             {
@@ -158,7 +158,7 @@ namespace FastGUI.Evaluations
             };
         }
 
-        public static Modules.FastGUIControl.Evaluator LengthMinEqual(int length)
+        public static Modules.ValidatorControlElement.Evaluator LengthMinEqual(int length)
         {
             return (Control control) =>
             {
@@ -166,7 +166,7 @@ namespace FastGUI.Evaluations
             };
         }
 
-        public static FastGUIControl.Evaluator RequiredCheckBox(Control checkbox)
+        public static ValidatorControlElement.Evaluator RequiredCheckBox(Control checkbox)
         {
             return (Control control) =>
             {
@@ -174,7 +174,7 @@ namespace FastGUI.Evaluations
             };
         }
 
-        public static FastGUIControl.Evaluator RequiredCheckBox_Uncheck(Control checkbox)
+        public static ValidatorControlElement.Evaluator RequiredCheckBox_Uncheck(Control checkbox)
         {
             return (Control control) =>
             {
