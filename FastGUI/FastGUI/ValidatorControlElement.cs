@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,13 +22,19 @@ namespace FastGUI.Modules
             text
         }
 
+        public struct EvaluateOutput
+        {
+            public bool correct;
+            public string errorMessage;
+        }
+
         /// <summary>
         /// Este delegado permite crear una funcion que se entrega al FastGUIControl.
         /// Esta funcion evaluara el control y si cumple la condicion se aprovara (true) y en caso contrario se reprueba (false)
         /// </summary>
         /// <param name="control"></param>
         /// <returns></returns>
-        public delegate bool Evaluator(Control control);
+        public delegate string Evaluator(Control control);
 
         public ValidatorControlElement(Control control, bool required = false)
         {
@@ -45,23 +52,32 @@ namespace FastGUI.Modules
             return fgc;
         }
 
-        public bool Evaluate()
+        public EvaluateOutput Evaluate()
         {
+            string efull = ""; 
             for (int i = 0; i < evaluations.Count; i++)
             {
-                if (!evaluations[i](control)) return false;
+                var e = evaluations[i](control);
+                if (e != "")
+                {
+                    efull += e + "\n";
+                }
             }
-            return true;
+            var output = new EvaluateOutput() { 
+                correct = efull == "",
+                errorMessage = efull
+            };
+            return output;
         }
 
-        public bool EvaluateRequiredControls(ValidatorControlCollection fastGUI)
-        {
-            for (int i = 0; i < requiredControls.Count; i++)
-            {
-                if (!fastGUI.Get(requiredControls[i]).Evaluate()) return false;
-            }
-            return true;
-        }
+        //public bool EvaluateRequiredControls(ValidatorControlCollection fastGUI)
+        //{
+        //    for (int i = 0; i < requiredControls.Count; i++)
+        //    {
+        //        if (!fastGUI.Get(requiredControls[i]).Evaluate()) return false;
+        //    }
+        //    return true;
+        //}
 
         public ValidatorControlElement AddEvaluation(Evaluator evaluator)
         {
@@ -95,7 +111,7 @@ namespace FastGUI.Modules
 
             public string StringOrEmpty()
             {
-                if (fgc.Evaluate())
+                if (fgc.Evaluate().correct)
                     return fgc.control.Text;
                 return "";
             }
@@ -108,7 +124,7 @@ namespace FastGUI.Modules
 
             public string IntOrZero()
             {
-                if (fgc.Evaluate())
+                if (fgc.Evaluate().correct)
                     return fgc.control.Text;
                 return "";
             }

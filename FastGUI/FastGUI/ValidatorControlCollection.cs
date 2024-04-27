@@ -24,25 +24,35 @@ namespace FastGUI.Modules
             return fgc;
         }
 
-        public bool Evaluate()
+        public ValidatorControlElement.EvaluateOutput Evaluate()
         {
             var list = controls.ToList();
+            string efull = "";
             for (int i = 0; i < list.Count; i++)
             {
-                if (!list[i].Value.Evaluate()) return false;
+                var e = list[i].Value.Evaluate();
+                if (!e.correct)
+                {
+                    efull += $"> control: {list[i].Key.Name}\n" + e.errorMessage + "\n";
+                }
             }
-            return true;
+            var output = new ValidatorControlElement.EvaluateOutput()
+            {
+                correct = efull == "",
+                errorMessage = efull
+            };
+            return output;
         }
 
-        public bool EvaluateRequiredOthers()
-        {
-            var list = controls.ToList();
-            for (int i = 0; i < list.Count; i++)
-            {
-                if (!list[i].Value.EvaluateRequiredControls(this)) return false;
-            }
-            return true;
-        }
+        //public bool EvaluateRequiredOthers()
+        //{
+        //    var list = controls.ToList();
+        //    for (int i = 0; i < list.Count; i++)
+        //    {
+        //        if (!list[i].Value.EvaluateRequiredControls(this)) return false;
+        //    }
+        //    return true;
+        //}
 
         public ValidatorControlElement Get(Control control)
         {
