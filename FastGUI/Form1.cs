@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using FastGUI.Evaluations;
 using FastGUI.Modules;
+using FastGUI.FastGUI;
 
 
 namespace FastGUI
@@ -19,10 +20,10 @@ namespace FastGUI
         public Form1()
         {
             InitializeComponent();
-            fastGUI = new FastGUI.Modules.ValidatorControlCollection();
+            fastGUI = new ValidatorControlCollection();
         }
 
-        FastGUI.Modules.ValidatorControlCollection fastGUI;
+        ValidatorControlCollection fastGUI;
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -36,7 +37,8 @@ namespace FastGUI
 
             fastGUI.Add(this.textBox3)
                 .AddEvaluation(TextBoxEvaluations.NotEmpty)
-                .AddEvaluation(TextBoxEvaluations.RegExp("^(\\d{1,3}(?:\\.\\d{3}){2}-[\\dkK])$"));
+                //.AddEvaluation(TextBoxEvaluations.RegExp("^(\\d{1,3}(?:\\.\\d{3}){2}-[\\dkK])$"));
+                .AddEvaluation(TextBoxEvaluations.IsRut);
 
             fastGUI.Add(this.textBox4)
                 .AddEvaluation(TextBoxEvaluations.IsFloat);
@@ -50,17 +52,18 @@ namespace FastGUI
             fastGUI.Add(this.textBox7)
                 .AddEvaluation(TextBoxEvaluations.Contains("KFC"));
 
-            fastGUI.Add(this.checkBox1).AddEvaluation(CheckBoxEvaluation.Required(this.textBox3, fastGUI));
+            fastGUI.Add(this.checkBox1).AddEvaluation(CheckBoxEvaluation.RequiredOnTrue(this.textBox3, fastGUI));
             //fastGUI.Get(this.checkBox1).AddRequiredControl(this.textBox1);
             fastGUI.Add(this.radioButton1);
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            bool evaluation1 = fastGUI.Evaluate();
-            bool evaluation2 = fastGUI.EvaluateRequiredOthers();
+            string evaluation1 = fastGUI.Evaluate().errorMessage;
+            //bool evaluation2 = fastGUI.EvaluateRequiredOthers().;
 
-            MessageBox.Show($"Evaluate All: {evaluation1}\nEvaluate Required: {evaluation2}");
+            //MessageBox.Show($"Evaluate All: {evaluation1}\nEvaluate Required: {evaluation2}");
+            MessageBox.Show($"Evaluate All: {evaluation1}");
         }
 
         private void button_chechneedrut_Click(object sender, EventArgs e)
@@ -76,13 +79,14 @@ namespace FastGUI
                 text = "Cheched: False\n";
             }
 
-            if (fastGUI.Get(this.checkBox1).Evaluate())
+            if (fastGUI.Get(this.checkBox1).Evaluate().correct)
             {
                 text += "Evaluacion rut: true";
             }
             else
             {
-                text += "Evaluacion rut: false";
+                text += "Evaluacion rut: false\n";
+                text+= fastGUI.Get(this.checkBox1).Evaluate().errorMessage;
             }
 
             MessageBox.Show($"{text}\nEl rut: {fastGUI.Get(this.textBox3).Get.String()}");

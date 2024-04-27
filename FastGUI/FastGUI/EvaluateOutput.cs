@@ -1,5 +1,4 @@
-﻿using FastGUI.Modules;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace FastGUI.FastGUI
 {
-    public interface Evaluation
+    public struct EvaluateOutput
     {
-        EvaluateOutput Evaluate();
+        public bool correct;
+        public string errorMessage;
     }
 }

@@ -24,7 +24,7 @@ namespace FastGUI.Modules
             return fgc;
         }
 
-        public ValidatorControlElement.EvaluateOutput Evaluate()
+        public EvaluateOutput Evaluate()
         {
             var list = controls.ToList();
             string efull = "";
@@ -36,7 +36,7 @@ namespace FastGUI.Modules
                     efull += $"> control: {list[i].Key.Name}\n" + e.errorMessage + "\n";
                 }
             }
-            var output = new ValidatorControlElement.EvaluateOutput()
+            var output = new EvaluateOutput()
             {
                 correct = efull == "",
                 errorMessage = efull

@@ -46,8 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Evaluations\CheckBoxEvaluation.cs" />
-    <Compile Include="Evaluations\TextBoxEvaluations.cs" />
+    <Compile Include="FastGUI\Evaluations\CheckBoxEvaluation.cs" />
+    <Compile Include="FastGUI\Evaluations\TextBoxEvaluations.cs" />
+    <Compile Include="FastGUI\EvaluateOutput.cs" />
+    <Compile Include="FastGUI\Evaluation.cs" />
+    <Compile Include="FastGUI\Utils\Rut.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

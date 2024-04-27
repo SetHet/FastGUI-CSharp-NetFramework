@@ -22,11 +22,11 @@ namespace FastGUI.Modules
             text
         }
 
-        public struct EvaluateOutput
-        {
-            public bool correct;
-            public string errorMessage;
-        }
+        //public struct EvaluateOutput
+        //{
+        //    public bool correct;
+        //    public string errorMessage;
+        //}
 
         /// <summary>
         /// Este delegado permite crear una funcion que se entrega al FastGUIControl.
